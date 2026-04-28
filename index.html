@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dummy Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 15px 0;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Dummy Website</h1>
+</header>
+
+<section>
+    <h2>About</h2>
+    <p>This is just a test website hosted on GitHub Pages.</p>
+
+    <h2>Features</h2>
+    <ul style="list-style:none;">
+        <li>✔ Fast and free hosting</li>
+        <li>✔ Simple setup</li>
+        <li>✔ Great for beginners</li>
+    </ul>
+
+    <button onclick="showMessage()">Click Me</button>
+    <p id="message"></p>
+</section>
+
+<footer>
+    <p>© 2026 My Dummy Site</p>
+</footer>
+
+<script>
+    function showMessage() {
+        document.getElementById("message").innerText = "Hello! Your site is working 🎉";
+    }
+</script>
+
+</body>
+</html>

@@ -6,163 +6,164 @@
 
 <title>Sanket Weds Sanjana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-   
 <style>
 
-/* =======================
-   GLOBAL
-======================= */
+/* BASE */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #fffaf2;
-    color: #3a2c23;
+    background: #fbf7f2;
+    color: #2d2a26;
     overflow-x: hidden;
 }
 
-/* =======================
-   INTRO SCREEN
-======================= */
-.intro {
+/* SOFT GLOW */
+body::before {
+    content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, #3b0a0a, #8b0000, #d4af37);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 999;
-    text-align: center;
-    padding: 20px;
+    background: radial-gradient(circle at top, rgba(200,164,92,0.15), transparent 60%);
+    pointer-events: none;
 }
 
-.intro h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(31px, 8vw, 60px);
-    color: #ffd700;
-    margin: 0;
-}
-
-.intro p {
-    font-size: clamp(14px, 4vw, 18px);
-    color: #fff3c4;
-    margin-top: 10px;
-}
-
-/* =======================
-   HERO SECTION
-======================= */
+/* HERO */
 .hero {
     text-align: center;
-    padding: clamp(70px, 15vw, 110px) 20px;
-    background: linear-gradient(rgba(60,20,20,0.75), rgba(60,20,20,0.85)),
-    url('https://images.unsplash.com/photo-1520854221256-17451cc331bf') center/cover;
+    padding: 110px 20px;
+    background: linear-gradient(rgba(40,20,20,0.75), rgba(40,20,20,0.85)),
+    url("functions.jpg") center/cover fixed;
     color: white;
 }
 
 .hero h1 {
-    font-family: 'Great+Vibes', cursive;
-    font-size: clamp(40px, 10vw, 80px);
-    color: #f5d08a;
-    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 9vw, 72px);
+    color: #f3d9a4;
 }
 
 .hero p {
-    font-size: clamp(14px, 4.5vw, 18px);
     margin-top: 10px;
-    color: #f5e6c8;
 }
 
 #countdown {
     margin-top: 15px;
-    font-size: clamp(16px, 5vw, 22px);
-    color: #ffe9b5;
+    font-size: 18px;
+    color: #f8e7c3;
 }
 
-/* =======================
-   SECTIONS
-======================= */
+/* SECTION */
 .section {
     max-width: 900px;
-    margin: 25px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin: 40px auto;
+    padding: 28px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
 }
 
-/* HEADINGS */
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .section h2 {
     text-align: center;
-    color: #8b5e3c;
-    font-size: clamp(20px, 6vw, 28px);
+    font-family: 'Playfair Display', serif;
+    color: #6b4e3d;
 }
 
 /* STORY */
 .story {
     text-align: center;
-    line-height: 1.8;
-    font-size: clamp(14px, 4vw, 16px);
+    line-height: 1.9;
 }
 
-/* EVENT BOX */
+/* FUNCTIONS */
+.functions {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.functions img {
+    width: 100%;
+    border-radius: 16px;
+    transition: transform 0.6s ease;
+}
+
+.functions:hover img {
+    transform: scale(1.05);
+}
+
+/* LABELS */
+.label {
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.carnival { top: 10%; left: 10%; }
+.sangeet { top: 10%; right: 10%; }
+.wedding { bottom: 10%; left: 10%; }
+.phera { bottom: 10%; right: 10%; }
+
+/* EVENTS */
 .event {
-    margin: 12px 0;
+    margin: 15px 0;
     padding: 18px;
-    background: #fffaf2;
+    background: #fffaf3;
     border-left: 4px solid #c8a45c;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
 }
 
-/* DRESS TAG */
+/* TAG */
 .tag {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 14px;
-    border-radius: 20px;
+    border-radius: 999px;
     border: 1px solid #c8a45c;
-    font-size: 13px;
     font-style: italic;
 }
 
-/* =======================
-   FLOATING PETALS
-======================= */
+/* PETALS */
 .petal {
     position: fixed;
     top: -10px;
-    font-size: 14px;
-    animation: fall linear infinite;
+    font-size: 16px;
     opacity: 0.6;
     pointer-events: none;
+    animation: fall linear infinite;
 }
 
 @keyframes fall {
-    0% {transform: translateY(-10vh) rotate(0);}
-    100% {transform: translateY(110vh) rotate(360deg);}
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
 }
 
-/* =======================
-   RESPONSIVE FIX
-======================= */
-@media (max-width: 600px) {
-    .section {
-        margin: 15px;
-        padding: 18px;
-    }
-}
-
-/* =======================
-   FOOTER
-======================= */
+/* FOOTER */
 footer {
     text-align: center;
-    padding: 25px;
-    color: #8b5e3c;
-    font-size: 14px;
+    padding: 30px;
+    color: #7a5a45;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .section {
+        margin: 20px;
+        padding: 20px;
+    }
 }
 
 </style>
@@ -170,104 +171,97 @@ footer {
 
 <body>
 
-<!-- =======================
-     INTRO
-======================= -->
-<div class="intro">
-    <h1>Sanket ❤️ Sanjana</h1>
-    <p>Invitation of Love & Forever</p>
-</div>
-
-<!-- =======================
-     HERO
-======================= -->
+<!-- HERO -->
 <div class="hero">
     <h1>Sanket ❤️ Sanjana</h1>
     <p>We are getting married</p>
     <div id="countdown"></div>
 </div>
 
-<!-- =======================
-     OUR STORY
-======================= -->
+<!-- STORY -->
 <div class="section">
     <h2>Our Story</h2>
     <div class="story">
-        Two hearts brought together by destiny ❤️<br>
-        A journey of love, trust, and forever begins here.
+        Two hearts, one destiny ❤️<br>
+        A journey that becomes forever.
     </div>
 </div>
 
-<!-- =======================
-     DRESS CODE
-======================= -->
-<div class="section" style="text-align:center;">
-    <h2>Dress Code</h2>
+<!-- FUNCTIONS -->
+<div class="section">
+    <h2>Wedding Functions</h2>
 
-    <p>✨ Traditional / Ethnic Wear Preferred ✨</p>
-    <p style="color:#6b4e3d;">
-        Soft gold, ivory, cream & royal festive tones
-    </p>
+    <div class="functions">
+        <img src="functions.png">
 
-    <div class="tag">
-        Dress details announcing soon
+        <div class="label carnival">Carnival</div>
+        <div class="label sangeet">Sangeet</div>
+        <div class="label wedding">Wedding</div>
+        <div class="label phera">Phera</div>
     </div>
 </div>
 
-<!-- =======================
-     EVENTS
-======================= -->
+<!-- EVENTS -->
 <div class="section">
     <h2>Wedding Events</h2>
 
-    <div id="day1" class="event">
+    <div class="event">
         <h3>📅 8th July</h3>
         <p>To Be Announced</p>
     </div>
 
-    <div id="day2" class="event">
+    <div class="event">
         <h3>📅 9th July</h3>
         <p>To Be Announced</p>
     </div>
 </div>
-<!-- =======================
-     FOOTER
-======================= -->
+
+<!-- DRESS -->
+<div class="section" style="text-align:center;">
+    <h2>Dress Code</h2>
+    <p>✨ Elegant Traditional Wear ✨</p>
+    <div class="tag">Details announcing soon</div>
+</div>
+
 <footer>
     Lahoti & Bharadiya Family Welcomes You 💛
 </footer>
 
-<!-- =======================
-     SCRIPT
-======================= -->
 <script>
 
-// Remove intro
-setTimeout(() => {
-    document.querySelector(".intro").style.display = "none";
-}, 2500);
-
-// Countdown
-const weddingDate = new Date("July 9, 2026 00:00:01").getTime();
+/* COUNTDOWN */
+const weddingDate = new Date("July 9, 2026 00:00:00").getTime();
 
 setInterval(() => {
     const now = new Date().getTime();
     const gap = weddingDate - now;
 
-    const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
+    const d = Math.floor(gap / (1000*60*60*24));
+    const h = Math.floor((gap / (1000*60*60)) % 24);
 
     document.getElementById("countdown").innerHTML =
-        `⏳ ${d} Days ${h} Hours to go`;
+        `⏳ ${d} Days ${h} Hours`;
 }, 1000);
 
-// Floating petals (lightweight for mobile)
-for (let i = 0; i < 18; i++) {
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add("show");
+        }
+    });
+});
+
+/* PETALS (OPTIMIZED) */
+for(let i=0;i<18;i++){
     let petal = document.createElement("div");
     petal.className = "petal";
     petal.innerHTML = "🌸";
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+    petal.style.left = Math.random()*100 + "vw";
+    petal.style.animationDuration = (6 + Math.random()*6) + "s";
     document.body.appendChild(petal);
 }
 

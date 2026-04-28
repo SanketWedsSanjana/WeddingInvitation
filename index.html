@@ -3,235 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sanket Weds Sanjana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    background: #fffaf2;
+    color: #3a2c23;
+    overflow-x: hidden;
+}
+
+/* CINEMATIC INTRO */
+.intro {
+    position: fixed;
+    inset: 0;
     background: linear-gradient(135deg, #3b0a0a, #8b0000, #d4af37);
-    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+    animation: fadeOut 2.5s ease forwards;
+    animation-delay: 2.5s;
+}
+
+.intro h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    color: #ffd700;
+    margin: 0;
+}
+
+.intro p {
+    color: #fff3c4;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeOut {
+    to {opacity: 0; visibility: hidden;}
+}
+
+/* FLOATING PETALS */
+.petal {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10vh) rotate(0);}
+    100% {transform: translateY(110vh) rotate(360deg);}
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 90px 20px;
-    background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.8)),
+    padding: 110px 20px;
+    background: linear-gradient(rgba(60,20,20,0.75), rgba(60,20,20,0.85)),
     url('https://images.unsplash.com/photo-1520854221256-17451cc331bf') center/cover;
+    color: white;
 }
 
 .hero h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 75px;
-    color: #ffd700;
+    font-size: 80px;
+    color: #f5d08a;
     margin: 0;
-    text-shadow: 2px 2px 10px black;
 }
 
 .hero p {
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 18px;
+    color: #f5e6c8;
 }
 
-/* COUNTDOWN */
-.countdown {
-    margin-top: 20px;
+#countdown {
+    margin-top: 18px;
     font-size: 22px;
-    color: #fff3b0;
+    color: #ffe9b5;
 }
 
 /* SECTIONS */
 .section {
     max-width: 900px;
-    margin: 30px auto;
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid rgba(255,215,0,0.3);
-    backdrop-filter: blur(10px);
-    animation: fadeIn 1s ease;
+    margin: 50px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
 }
 
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HEADINGS */
 .section h2 {
     text-align: center;
-    color: #ffd700;
+    color: #8b5e3c;
     font-size: 28px;
+}
+
+/* STORY */
+.story {
+    text-align: center;
+    line-height: 1.9;
 }
 
 /* EVENT CARD */
 .event {
     margin: 15px 0;
     padding: 20px;
-    background: rgba(255,255,255,0.1);
-    border-left: 5px solid gold;
+    background: #fffaf2;
+    border-left: 5px solid #c8a45c;
     border-radius: 10px;
     text-align: center;
 }
 
-/* BUTTONS */
-.buttons {
-    text-align: center;
-    margin: 20px 0;
-}
-
-button {
-    background: gold;
-    color: #3b0a0a;
-    border: none;
+/* DRESS CODE */
+.tag {
+    display: inline-block;
+    margin-top: 12px;
     padding: 10px 18px;
-    margin: 5px;
     border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:hover {
-    background: #ffdf70;
-}
-
-/* MUSIC */
-.music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: gold;
-    border: none;
-    padding: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-/* HIDDEN */
-.hidden { display: none; }
-
-/* ANIMATION */
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+    border: 1px solid #c8a45c;
+    background: linear-gradient(135deg, #fffaf2, #f6ead7);
+    color: #8b5e3c;
+    font-style: italic;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
-    color: #ffd700;
+    padding: 30px;
+    color: #8b5e3c;
 }
+
+/* FADE IN SCROLL */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- CINEMATIC INTRO -->
+<div class="intro">
+    <h1>Sanket ❤️ Sanjana</h1>
+    <p>Invitation of Love & Forever</p>
+</div>
+
 <!-- HERO -->
 <div class="hero">
     <h1>Sanket ❤️ Sanjana</h1>
-    <p>Lahoti & Bharadiya Family Welcomes You</p>
-    <div class="countdown" id="countdown"></div>
-</div>
-
-<!-- INVITE SELECT -->
-<div class="buttons">
-    <p>Select Your Invitation</p>
-    <button onclick="showInvite('day1')">Day 1</button>
-    <button onclick="showInvite('day2')">Day 2</button>
-    <button onclick="showInvite('both')">Full Invite</button>
+    <p>We are getting married</p>
+    <div id="countdown"></div>
 </div>
 
 <!-- STORY -->
-<div class="section">
+<div class="section fade">
     <h2>Our Story</h2>
-    <p style="text-align:center;">
-        From two hearts meeting by destiny ❤️<br>
-        to a lifetime of togetherness,<br>
-        this is where our forever begins.
-    </p>
+    <div class="story">
+        Two hearts, one destiny ❤️<br>
+        A journey written by time, sealed with love, and destined forever.
+    </div>
 </div>
 
-<!-- DRESS CODE -->
-<div class="section">
+<!-- DRESS -->
+<div class="section fade">
     <h2>Dress Code</h2>
     <p style="text-align:center;">
-        👑 Traditional Royal Attire Preferred 👑<br>
-        Gold, Maroon & Festive Colors
+        ✨ Royal Traditional Attire ✨
     </p>
+    <p style="text-align:center; color:#6b4e3d;">
+        Gold • Ivory • Festive Elegance
+    </p>
+    <div style="text-align:center;">
+        <span class="tag">Details will be announced soon</span>
+    </div>
 </div>
 
 <!-- EVENTS -->
-<div class="section">
-
+<div class="section fade">
     <h2>Wedding Events</h2>
 
-    <div id="day1" class="event hidden">
+    <div id="day1" class="event">
         <h3>📅 8th July</h3>
-        <p>✨ To Be Announced ✨</p>
+        <p>To Be Announced</p>
     </div>
 
-    <div id="day2" class="event hidden">
+    <div id="day2" class="event">
         <h3>📅 9th July</h3>
-        <p>✨ To Be Announced ✨</p>
+        <p>To Be Announced</p>
     </div>
-
 </div>
 
-<footer>
-    We look forward to celebrating with you 💛
+<footer class="fade">
+    Lahoti & Bharadiya Family Welcomes You 💛
 </footer>
-
-<!-- MUSIC -->
-<audio id="music" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <script>
 
-// URL-based invite system
-const params = new URLSearchParams(window.location.search);
-const invite = params.get("invite");
-
-function showInvite(type) {
-    document.getElementById("day1").classList.add("hidden");
-    document.getElementById("day2").classList.add("hidden");
-
-    if (type === "day1") {
-        document.getElementById("day1").classList.remove("hidden");
-    }
-    if (type === "day2") {
-        document.getElementById("day2").classList.remove("hidden");
-    }
-    if (type === "both") {
-        document.getElementById("day1").classList.remove("hidden");
-        document.getElementById("day2").classList.remove("hidden");
-    }
+/* PETALS */
+for(let i=0;i<25;i++){
+    let p = document.createElement("div");
+    p.className = "petal";
+    p.innerHTML = "🌸";
+    p.style.left = Math.random()*100 + "vw";
+    p.style.animationDuration = (5+Math.random()*5) + "s";
+    document.body.appendChild(p);
 }
 
-// auto invite
-if (invite) showInvite(invite);
-
-// countdown
+/* COUNTDOWN */
 const weddingDate = new Date("July 9, 2026 00:00:00").getTime();
 
 setInterval(() => {
     const now = new Date().getTime();
     const gap = weddingDate - now;
 
-    const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((gap / (1000 * 60)) % 60);
+    const d = Math.floor(gap / (1000*60*60*24));
+    const h = Math.floor((gap / (1000*60*60)) % 24);
 
     document.getElementById("countdown").innerHTML =
-        `⏳ ${d} Days ${h} Hours ${m} Minutes`;
+        `⏳ ${d} Days ${h} Hours to go`;
 }, 1000);
 
-// music
-const music = document.getElementById("music");
-function toggleMusic() {
-    if (music.paused) music.play();
-    else music.pause();
-}
+/* SCROLL REVEAL */
+const sections = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add("show");
+        }
+    });
+});
+
+/* REMOVE INTRO AFTER LOAD */
+setTimeout(() => {
+    document.querySelector(".intro").style.display = "none";
+}, 3000);
 
 </script>
 
